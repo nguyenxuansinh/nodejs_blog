@@ -10,18 +10,23 @@ app.use(morgan('combined'))
 
 //template engine
 
-app.set('views', path.join(__dirname,'resources/views'));
+app.set('views', path.join(__dirname,'/views'));
 app.engine('handlebars', exphbs.engine({
   defaultLayout: 'main',
-  layoutsDir: __dirname + '/resources/views/layouts/',
-  partialsDir: __dirname + '/resources/views/partials/'
+  layoutsDir: __dirname + '/views/layouts/',
+  partialsDir: __dirname + '/views/partials/'
 }));
 app.set('view engine', 'handlebars');
 
 
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
   res.render('home');
 });
+
+app.get('/tintuc', (req, res) => {
+  res.render('tintuc');
+});
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port  http://localhost:${port}`)
